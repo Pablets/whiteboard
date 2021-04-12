@@ -3,13 +3,13 @@ import { useCycle } from 'framer-motion'
 import { Frame } from 'framer'
 
 const Dropdown = ({ icon, label, children }) => {
-  const [scaleY, cycle] = useCycle(0, 1)
+  const [scale, cycle] = useCycle(0, 1)
 
   return (
     <div>
-      <div onMouseLeave={() => scaleY === 1 && cycle()}>
+      <div onMouseLeave={() => scale === 1 && cycle()}>
         <button
-          className='rounded-full text-decoration-none focus:outline-none p-2 leading-10 h-10 flex bg-red-500 rounded-sm'
+          className='rounded-full text-decoration-none focus:outline-none p-2 leading-10 h-10 flex bg-red-500 relative z-20'
           onClick={() => cycle()}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -31,10 +31,11 @@ const Dropdown = ({ icon, label, children }) => {
         <Frame
           className='relative'
           background={null}
-          initial={{ scaleY: 0 }}
+          initial={{ scale: 0 }}
           originY={0}
-          animate={{ scaleY: scaleY, opacity: scaleY }}>
-          <div className='bg-yellow-600 w-28 overflow-hidden absolute right-40 rounded-md'>
+          originX={0}
+          animate={{ scale: scale, opacity: scale }}>
+          <div className='bg-yellow-600 w-28 overflow-hidden rounded-md -m-6 absolute z-10 right-52'>
             {children}
           </div>
         </Frame>

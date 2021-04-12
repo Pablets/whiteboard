@@ -43,6 +43,7 @@ const Header = () => {
           <div style={{ height: menuHeight }} className='flex justify-evenly'>
             <div ref={div1Ref} className='p-4 h-32 w-36'>
               <button
+                className='active: outline-none active: transition-transform'
                 onClick={() => {
                   setState(!state)
                   setMenuHeight(div1Ref.current.clientHeight)
@@ -55,6 +56,7 @@ const Header = () => {
             </div>
             <div ref={div2Ref} className='p-4 h-80 w-36'>
               <button
+                className='active: outline-none'
                 onClick={() => {
                   setState(!state)
                   setMenuHeight(div2Ref.current.clientHeight)
