@@ -28,7 +28,7 @@ const Header = () => {
   }, [state])
 
   return (
-    <header className='flex justify-between px-8'>
+    <header className='flex justify-between px-8 items-center'>
       <h1 className='text-5xl font-bold text-gray-600'>
         Age of empires civilizations
       </h1>
