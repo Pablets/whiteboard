@@ -28,7 +28,7 @@ const Header = () => {
   }, [state])
 
   return (
-    <header className='flex justify-between'>
+    <header className='flex justify-between px-8'>
       <h1 className='text-5xl font-bold text-gray-600'>
         Age of empires civilizations
       </h1>
@@ -47,7 +47,7 @@ const Header = () => {
                   setState(!state)
                   setMenuHeight(div1Ref.current.clientHeight)
                 }}>
-                Go right
+                Go right ▶
               </button>
               <h1>otro item</h1>
               <h1>otro item</h1>
@@ -59,7 +59,7 @@ const Header = () => {
                   setState(!state)
                   setMenuHeight(div2Ref.current.clientHeight)
                 }}>
-                Go left
+                ◀ Go left
               </button>
               <h1>otro item</h1>
               <h1>otro item</h1>

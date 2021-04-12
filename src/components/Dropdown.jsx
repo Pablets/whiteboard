@@ -9,7 +9,7 @@ const Dropdown = ({ icon, label, children }) => {
     <div>
       <div onMouseLeave={() => scaleY === 1 && cycle()}>
         <button
-          className='text-decoration-none focus:outline-none p-2 leading-10 h-10 flex bg-red-500 rounded-sm'
+          className='rounded-full text-decoration-none focus:outline-none p-2 leading-10 h-10 flex bg-red-500 rounded-sm'
           onClick={() => cycle()}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -34,7 +34,7 @@ const Dropdown = ({ icon, label, children }) => {
           initial={{ scaleY: 0 }}
           originY={0}
           animate={{ scaleY: scaleY, opacity: scaleY }}>
-          <div className='bg-yellow-600 w-28 overflow-hidden absolute right-40 rounded-md rounded-r-none'>
+          <div className='bg-yellow-600 w-28 overflow-hidden absolute right-40 rounded-md'>
             {children}
           </div>
         </Frame>
