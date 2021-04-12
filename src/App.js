@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './screens/Home'
+import Autocomplete from './screens/Autocomplete'
+import Header from './components/Header'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className='bg-yellow-400 py-4'>
+        <Header />
+      </div>
+      <div>
+        <Switch>
+          <Route path='/autocomplete'>
+            <Autocomplete />
+          </Route>
+          <Route path='/'>
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
+
+/*
+        <nav className='flex items-center justify-between bg-yellow-400 p-4'>
+          <h1 className='text-5xl font-bold text-gray-600'>
+            Age of empires civilizations
+          </h1>
+          <ul>
+            <li>
+              <Link to='/'>Home</Link>
+            </li>
+            <li>
+              <Link to='/autocomplete'>Autocomplete</Link>
+            </li>
+          </ul>
+        </nav>
+        */
