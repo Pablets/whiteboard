@@ -1,16 +1,9 @@
 import React, { useRef, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-// import { useMediaQuery } from 'react-responsive'
 import useRootClose from 'react-overlays/useRootClose'
 import Dropdown from './Dropdown'
-// import { FaUser } from 'react-icons/fa';
 import { motion } from 'framer-motion'
 
 const Header = () => {
-  //   const isDesktop = useMediaQuery({
-  //     query: '(min-device-width: 1224px)',
-  //   })
-
   const ref = useRef()
   const [show, setShow] = useState(false)
   const [state, setState] = useState(true)
@@ -25,14 +18,11 @@ const Header = () => {
   const div2Ref = React.useRef()
 
   const [menuHeight, setMenuHeight] = React.useState(null)
-//   const [menuWidth, setMenuWidth] = React.useState(null)
-
-//   console.log(menuHeight)
 
   React.useEffect(() => {
-    if (!menuHeight || menuHeight !== div1Ref.current.clientHeight) {
+    if (state) {
       setMenuHeight(div1Ref.current.clientHeight)
-    } else if (!menuHeight || menuHeight !== div2Ref.current.clientHeight) {
+    } else {
       setMenuHeight(div2Ref.current.clientHeight)
     }
   }, [state])
@@ -50,10 +40,8 @@ const Header = () => {
               ? 'transform-gpu -translate-x-36'
               : 'transform-gpu translate-x-0'
           }`}>
-          <div
-          style={{ height: menuHeight }}
-          className='flex justify-evenly'>
-            <div ref={div1Ref} className='p-4 h-28 w-36'>
+          <div style={{ height: menuHeight }} className='flex justify-evenly'>
+            <div ref={div1Ref} className='p-4 h-32 w-36'>
               <button
                 onClick={() => {
                   setState(!state)
