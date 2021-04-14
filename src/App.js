@@ -3,24 +3,35 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './screens/Home'
 import Autocomplete from './screens/Autocomplete'
 import Header from './components/Header'
+import { CounterProvider } from './context/counter'
+import Counter from './screens/Counter'
+import UseReducer from './screens/UseReducer'
 
 const App = () => {
   return (
-    <Router>
-      <div className='bg-yellow-400 py-4'>
-        <Header />
-      </div>
-      <div>
-        <Switch>
-          <Route path='/autocomplete'>
-            <Autocomplete />
-          </Route>
-          <Route path='/'>
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <CounterProvider>
+      <Router>
+        <div className='bg-yellow-400 py-4'>
+          <Header />
+        </div>
+        <div>
+          <Switch>
+            <Route path='/autocomplete'>
+              <Autocomplete />
+            </Route>
+            <Route path='/counter'>
+              <Counter />
+            </Route>
+            <Route path='/usereducer'>
+              <UseReducer />
+            </Route>
+            <Route path='/'>
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </CounterProvider>
   )
 }
 

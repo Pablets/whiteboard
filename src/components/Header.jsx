@@ -1,17 +1,10 @@
-import React, { useRef, useState } from 'react'
-import useRootClose from 'react-overlays/useRootClose'
+import React, { useState } from 'react'
 import Dropdown from './Dropdown'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
-  const ref = useRef()
-  const [show, setShow] = useState(false)
   const [state, setState] = useState(true)
-  const handleRootClose = () => setShow(false)
-
-  useRootClose(ref, handleRootClose, {
-    disabled: !show,
-  })
 
   const div1Ref = React.useRef()
 
@@ -21,48 +14,64 @@ const Header = () => {
 
   React.useEffect(() => {
     if (state) {
-      setMenuHeight(div1Ref.current.clientHeight)
+      setMenuHeight(div1Ref.current.children.length * 2)
     } else {
-      setMenuHeight(div2Ref.current.clientHeight)
+      setMenuHeight(div2Ref.current.children.length * 2 - 5)
     }
   }, [state])
 
   return (
     <header className='flex justify-between px-8 items-center'>
-      <h1 className='text-5xl font-bold text-gray-600'>
-        Age of empires civilizations
-      </h1>
+      <h1 className='text-5xl font-bold text-gray-600'>Playground</h1>
       <Dropdown icon={'fas fa-user'} label={null}>
         <motion.div
-          style={{ height: menuHeight }}
-          className={`transition-all duration-500 w-72 ${
+          style={{ height: `${menuHeight}rem` }}
+          className={`transition-all duration-700 w-72 ${
             !state
               ? 'transform-gpu -translate-x-36'
               : 'transform-gpu translate-x-0'
           }`}>
-          <div style={{ height: menuHeight }} className='flex justify-evenly'>
-            <div ref={div1Ref} className='p-4 h-32 w-36'>
+          <div className='flex justify-evenly'>
+            <div
+              ref={div1Ref}
+              className='pt-4 h-32 w-36 text-gray-300 flex flex-col justify-between font-bold'>
               <button
-                className='active: outline-none active: transition-transform'
+                className='focus:outline-none focus:ring-0 focus:ring-offset-0 text-left font-bold'
                 onClick={() => {
                   setState(!state)
                   setMenuHeight(div1Ref.current.clientHeight)
                 }}>
-                Go right ▶
+                <h1>Go right</h1>
               </button>
-              <h1>otro item</h1>
-              <h1>otro item</h1>
-              <h1>otro item</h1>
+              <div>
+                <Link to='/'>Home</Link>
+              </div>
+              <div>
+                <Link to='/autocomplete'>Autocomplete</Link>
+              </div>
+              <div>
+                {' '}
+                <Link to='/counter'>Counter</Link>
+              </div>
+              <div>
+                {' '}
+                <Link to='/usereducer'>useReducer</Link>
+              </div>
             </div>
-            <div ref={div2Ref} className='p-4 h-80 w-36'>
+            <div
+              ref={div2Ref}
+              className='pt-4 w-36 text-gray-300 flex flex-col justify-between font-bold'>
               <button
-                className='active: outline-none'
+                className='focus:outline-none focus:ring-0 focus:ring-offset-0 text-left font-bold'
                 onClick={() => {
                   setState(!state)
                   setMenuHeight(div2Ref.current.clientHeight)
                 }}>
-                ◀ Go left
+                <h1>Go left</h1>
               </button>
+              <h1>otro item</h1>
+              <h1>otro item</h1>
+              <h1>otro item</h1>
               <h1>otro item</h1>
               <h1>otro item</h1>
               <h1>otro item</h1>
