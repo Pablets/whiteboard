@@ -21,8 +21,8 @@ const Header = () => {
   }, [state])
 
   return (
-    <header className='flex justify-between px-8 items-center'>
-      <h1 className='text-5xl font-bold text-gray-600'>Playground</h1>
+    <header className='top-0 bg-yellow-500 py-4 flex justify-end w-screen px-8 items-center fixed'>
+      <h1 className='pr-4 text-5xl font-bold text-gray-600'>Playground</h1>
       <Dropdown icon={'fas fa-user'} label={null}>
         <motion.div
           style={{ height: `${menuHeight}rem` }}

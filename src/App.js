@@ -12,7 +12,7 @@ const App = () => {
   return (
     <CounterProvider>
       <Router>
-        <div className='bg-yellow-400 py-4'>
+        <div>
           <Header />
         </div>
         <div>

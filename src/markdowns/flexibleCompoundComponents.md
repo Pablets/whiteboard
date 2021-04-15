@@ -1,5 +1,5 @@
 ````jsx
-import React, { Children } from 'react'
+import React from 'react'
 import { Switch } from '../utils/switch'
 
 const ToggleContext = React.createContext()

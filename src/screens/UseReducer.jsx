@@ -1,23 +1,6 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
-import code from '../markdowns/code.md'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
-
-const renderers = {
-  code: ({ language, value }) => {
-    return (
-      <SyntaxHighlighter
-        className='rounded-xl select-text'
-        contenteditable='true'
-        style={tomorrow}
-        language={language}
-        showLineNumbers
-        children={value}
-      />
-    )
-  },
-}
+import MarkdownRenderer from '../components/MarkdownRenderer'
+import simpleUseReducer from '../markdowns/simpleUseReducer.md'
 
 const myReducer = (state, action) => {
   switch (action.type) {
@@ -36,16 +19,8 @@ const UseReducer = () => {
   })
   const { count } = state
 
-  const [md, setMd] = React.useState('')
-
-  React.useLayoutEffect(() => {
-    fetch(code)
-      .then(res => res.text())
-      .then(data => setMd(data))
-  })
-
   return (
-    <div>
+    <div className='ml-8 mt-24'>
       <div className='m-8 flex'>
         <button
           className={grayButton}
@@ -62,11 +37,7 @@ const UseReducer = () => {
         </h1>
       </div>
       <div className='mb-20 flex'>
-        <ReactMarkdown
-          renderers={renderers}
-          className='ml-8 w-3/4 bg-transparent select-all'>
-          {md}
-        </ReactMarkdown>
+        <MarkdownRenderer markdown={simpleUseReducer} />
       </div>
     </div>
   )

@@ -126,7 +126,7 @@ const Home = () => {
   }
 
   return (
-    <div className='m-8'>
+    <div className='ml-8 mt-24'>
       {/* <SearchCivilization parentSubmitHandler={parentSubmitHandler} /> */}
       <Autocomplete parentSubmitHandler={parentSubmitHandler} />
       <ErrorBoundary

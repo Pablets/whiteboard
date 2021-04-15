@@ -1,25 +1,5 @@
 ```javascript
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
-import code from '../markdowns/code.md'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
-
-const renderers = {
-  code: ({ language, value }) => {
-    return (
-      <SyntaxHighlighter
-        className='rounded-xl'
-        style={tomorrow}
-        language={language}
-        showLineNumbers
-        wrapLines='true'
-        wrapLongLines
-        children={value}
-      />
-    )
-  },
-}
 
 const myReducer = (state, action) => {
   switch (action.type) {
@@ -38,14 +18,6 @@ const UseReducer = () => {
   })
   const { count } = state
 
-  const [md, setMd] = React.useState('')
-
-  React.useLayoutEffect(() => {
-    fetch(code)
-      .then(res => res.text())
-      .then(data => setMd(data))
-  })
-
   return (
     <div>
       <div className='m-8 flex'>
@@ -62,13 +34,6 @@ const UseReducer = () => {
         <h1 className='ml-2 bg-yellow-200 text-gray-700 text-2xl inline-flex justify-center items-center font-bold px-2 py-1 rounded'>
           Count: {count}
         </h1>
-      </div>
-      <div className='mb-20 flex'>
-        <ReactMarkdown
-          renderers={renderers}
-          className='ml-8 w-3/4 bg-transparent'>
-          {md}
-        </ReactMarkdown>
       </div>
     </div>
   )

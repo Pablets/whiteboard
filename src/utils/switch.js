@@ -14,12 +14,16 @@ class Switch extends React.Component {
     const btnClassName = [
       className,
       'toggle-btn',
+      'w-10',
       on ? 'toggle-btn-on' : 'toggle-btn-off',
     ]
       .filter(Boolean)
       .join(' ')
     return (
-      <label aria-label={ariaLabel || 'Toggle'} style={{ display: 'block' }}>
+      <label
+        className='max-w-min p-0 m-0 h-20 flex justify-center items-center rounded-full overflow-hidden'
+        aria-label={ariaLabel || 'Toggle'}
+        >
         <input
           className='toggle-input'
           type='checkbox'
@@ -28,7 +32,7 @@ class Switch extends React.Component {
           onClick={onClick}
           data-testid='toggle-input'
         />
-        <span className={btnClassName} {...props} />
+        <span className={`${btnClassName}`} {...props} />
       </label>
     )
   }

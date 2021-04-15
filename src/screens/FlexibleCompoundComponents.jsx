@@ -1,24 +1,7 @@
 import React from 'react'
 import { Switch } from '../utils/switch'
-import ReactMarkdown from 'react-markdown'
 import flexibleCompoundComponents from '../markdowns/flexibleCompoundComponents.md'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
-
-const renderers = {
-  code: ({ language, value }) => {
-    return (
-      <SyntaxHighlighter
-        className='rounded-md'
-        contenteditable='true'
-        style={tomorrow}
-        language={language}
-        showLineNumbers
-        children={value}
-      />
-    )
-  },
-}
+import MarkdownRenderer from '../components/MarkdownRenderer'
 
 const ToggleContext = React.createContext()
 ToggleContext.displayName = 'ToggleContext'
@@ -74,30 +57,19 @@ function CustomButton(props) {
 }
 
 function FlexibleCompoundComponents() {
-  const [md, setMd] = React.useState('')
-
-  React.useLayoutEffect(() => {
-    fetch(flexibleCompoundComponents)
-      .then(res => res.text())
-      .then(data => setMd(data))
-  })
-
   return (
     <div>
-      <Toggle>
-        <ToggleOn>The button is on</ToggleOn>
-        <ToggleOff>The button is off</ToggleOff>
-        <div>
-          <ToggleButton />
-        </div>
-        <CustomButton />
-      </Toggle>
-      <ReactMarkdown
-        contenteditable='true'
-        renderers={renderers}
-        className='ml-8 w-3/4 bg-transparent select-all'>
-        {md}
-      </ReactMarkdown>
+      <div className='ml-8 mt-24'>
+        <Toggle>
+          <ToggleOn>The button is on</ToggleOn>
+          <ToggleOff>The button is off</ToggleOff>
+          <div>
+            <ToggleButton />
+          </div>
+          <CustomButton />
+        </Toggle>
+      </div>
+      <MarkdownRenderer markdown={flexibleCompoundComponents} />
     </div>
   )
 }
