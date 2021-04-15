@@ -8,12 +8,11 @@ const renderers = {
   code: ({ language, value }) => {
     return (
       <SyntaxHighlighter
-        className='rounded-xl'
+        className='rounded-xl select-text'
+        contenteditable='true'
         style={tomorrow}
         language={language}
         showLineNumbers
-        wrapLines='true'
-        wrapLongLines
         children={value}
       />
     )
@@ -65,7 +64,7 @@ const UseReducer = () => {
       <div className='mb-20 flex'>
         <ReactMarkdown
           renderers={renderers}
-          className='ml-8 w-3/4 bg-transparent'>
+          className='ml-8 w-3/4 bg-transparent select-all'>
           {md}
         </ReactMarkdown>
       </div>

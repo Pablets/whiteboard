@@ -52,7 +52,7 @@ const Dropdown = ({ icon, label, children }) => {
           originX={0}
           animate={{ scale: twist, opacity: twist }}
           transition={{duration: 0.4}}>
-          <div className='bg-gray-600 w-28 overflow-hidden rounded-md -m-8 box-content p-4 absolute z-10 right-0'>
+          <div className='bg-gray-600 w-36 overflow-hidden rounded-lg rounded-tr-3xl -m-10 box-content absolute z-10 right-0'>
             {children}
           </div>
         </Frame>
