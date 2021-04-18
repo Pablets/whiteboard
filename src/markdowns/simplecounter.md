@@ -1,4 +1,4 @@
-```jsx
+~~~js
 import React from 'react'
 
 import { useCounter } from '../context/counter'
@@ -27,4 +27,4 @@ const grayButton =
   'focus:outline-none focus:bg-gray-400 ml-2 bg-gray-200 text-gray-700 text-2xl w-10 inline-flex justify-center items-center font-bold px-2 py-1 rounded'
 
 export default Counter
-```
+~~~

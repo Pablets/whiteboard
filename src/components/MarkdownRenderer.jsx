@@ -1,18 +1,35 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-const renderers = {
-  code: ({ language, value }) => {
-    return (
+// const components  = {
+//   code: ({ language, value }) => {
+//     return (
+//       <SyntaxHighlighter
+//         className='rounded-xl overflow-hidden focus:outline-none'
+//         contentEditable='true'
+//         style={tomorrow}
+//         language={language}
+//         children={value}
+//       />
+//     )
+//   },
+// }
+
+const components = {
+  code({ node, className, ...props }) {
+    const match = /language-(\w+)/.exec(className || '')
+    return match ? (
       <SyntaxHighlighter
-        className='rounded-xl overflow-hidden focus:outline-none'
-        contenteditable='true'
-        style={tomorrow}
-        language={language}
-        children={value}
+        language={match[1]}
+        contentEditable='true'
+        PreTag='div'
+        style={dark}
+        {...props}
       />
+    ) : (
+      <code className={className} {...props} />
     )
   },
 }
@@ -29,7 +46,7 @@ const MarkdownRenderer = ({ markdown }) => {
   return (
     <div className='outline-none focus:outline-none'>
       <ReactMarkdown
-        renderers={renderers}
+        components={components}
         className='ml-8 w-3/4 bg-transparent select-all focus:outline-none rounded-xl overflow-hidden'>
         {codeBlock}
       </ReactMarkdown>

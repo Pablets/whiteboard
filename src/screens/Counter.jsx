@@ -1,6 +1,8 @@
 import React from 'react'
 import simplecounter from '../markdowns/simplecounter.md'
+import simpleMarkdown from '../markdowns/simpleMarkdown.md'
 import MarkdownRenderer from '../components/MarkdownRenderer'
+import MarkdownTextRenderer from '../components/MarkdownTextRenderer'
 
 import { useCounter } from '../context/counter'
 
@@ -8,6 +10,7 @@ function Counter() {
   const [state, dispatch] = useCounter()
   const increment = () => dispatch({ type: 'increment' })
   const decrement = () => dispatch({ type: 'decrement' })
+
   return (
     <div>
       <div className='ml-8 mt-24'>
@@ -20,6 +23,8 @@ function Counter() {
         </button>
       </div>
       <MarkdownRenderer markdown={simplecounter} />
+      <MarkdownRenderer markdown={simpleMarkdown} />
+      <MarkdownTextRenderer markdown={simpleMarkdown} />
     </div>
   )
 }

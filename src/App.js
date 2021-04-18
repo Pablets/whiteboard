@@ -7,6 +7,7 @@ import { CounterProvider } from './context/counter'
 import Counter from './screens/Counter'
 import UseReducer from './screens/UseReducer'
 import FlexibleCompoundComponents from './screens/FlexibleCompoundComponents'
+import StateManagement from './screens/StateManagement'
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
             </Route>
             <Route path='/flexiblecompoundcomponents'>
               <FlexibleCompoundComponents />
+            </Route>
+            <Route path='/statemanagement'>
+              <StateManagement />
             </Route>
             <Route path='/'>
               <Home />
